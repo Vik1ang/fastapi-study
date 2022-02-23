@@ -13,21 +13,22 @@ class CityInfo(BaseModel):
 
 
 @app.get('/')
-def hello_world():
+async def hello_world():
     return {
         'hello': 'world'
     }
 
 
 @app.get('/city/{city}')
-def result(city: str, query_string: Optional[str] = None):
+async def result(city: str, query_string: Optional[str] = None):
     return {
         'city': city,
         'query_string': query_string
     }
 
+
 @app.put('/city/{city}')
-def result(city:str, city_info: CityInfo):
+async def result(city: str, city_info: CityInfo):
     return {
         'city': city,
         'country': city_info.country,
